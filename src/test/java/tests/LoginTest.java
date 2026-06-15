@@ -8,18 +8,32 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void verifyValidLogin() {
 
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login("Admin", "admin123");
 
-        String actualUrl = driver.getCurrentUrl();
-
         Assert.assertTrue(
-                actualUrl.contains("dashboard"),
-                "Login failed: Dashboard URL was not displayed"
+                driver.getCurrentUrl().contains("wrongdashboard"),
+                "Login failed: Dashboard page was not opened"
+        );
+    }
+
+    @Test(priority = 2)
+    public void verifyInvalidLogin() {
+
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.login("Admin", "wrongpassword");
+
+        String actualMessage = loginPage.getInvalidLoginMessage();
+
+        Assert.assertEquals(
+                actualMessage,
+                "Invalid credentials",
+                "Invalid login error message mismatch"
         );
     }
 }

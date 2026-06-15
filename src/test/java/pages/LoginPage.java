@@ -34,4 +34,8 @@ public class LoginPage {
         enterPassword(password);
         clickLoginButton();
     }
+    private By invalidCredentialsMessage = By.xpath("//p[contains(@class,'oxd-alert-content-text')]");
+    public String getInvalidLoginMessage() {
+        return WaitUtils.waitForElementVisible(driver, invalidCredentialsMessage).getText();
+    }
 }
