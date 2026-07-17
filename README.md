@@ -106,7 +106,7 @@ flowchart TD
 
 The framework follows a modular and reusable architecture with separate packages for base classes, page objects, utilities, listeners, test cases, and configuration.
 
-![Project Explorer](docs/project explorer.png)
+![Project Explorer](docs/projectexplorer.png)
 ---
 ## Framework Flow
 
