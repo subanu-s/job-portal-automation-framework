@@ -1,14 +1,16 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import pages.LoginPage;
+import utils.WaitUtils;
 
 public class LoginTest extends BaseTest {
 
-    @Test(priority = 1)
+    @Test
     public void verifyValidLogin() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -16,17 +18,27 @@ public class LoginTest extends BaseTest {
         loginPage.login("Admin", "admin123");
 
         Assert.assertTrue(
-                driver.getCurrentUrl().contains("wrongdashboard"),
+                WaitUtils.waitForUrlContains(driver, "dashboard"),
                 "Login failed: Dashboard page was not opened"
         );
     }
 
-    @Test(priority = 2)
-    public void verifyInvalidLogin() {
+    @DataProvider(name = "invalidLoginData")
+    public Object[][] provideInvalidLoginData() {
+
+        return new Object[][] {
+            {"Admin", "wrongpassword"},
+            {"WrongUser", "admin123"},
+            {"WrongUser", "wrongpassword"}
+        };
+    }
+
+    @Test(dataProvider = "invalidLoginData")
+    public void verifyInvalidLogin(String username, String password) {
 
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.login("Admin", "wrongpassword");
+        loginPage.login(username, password);
 
         String actualMessage = loginPage.getInvalidLoginMessage();
 
