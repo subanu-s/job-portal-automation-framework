@@ -83,7 +83,23 @@ flowchart TD
     O --> P
     P --> Q[HTML Automation Report]
 ```
+---
 
+# Extent Report 1
+
+![Extent Report 1](docs/extendreport1.png)
+
+---
+
+# Extent Report 2
+
+![Extent Report 2](docs/extendreport2.png)
+
+---
+
+# Extent Report 3
+
+![Extent Report 3](docs/extendreport3.png)
 ---
 ## Framework Flow
 
