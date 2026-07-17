@@ -1,22 +1,19 @@
 # Maven
 target/
 
-# TestNG Reports
+# Test outputs
 test-output/
-
-# Extent Reports
 reports/
-
-# Screenshots
 screenshots/
 
-# Java compiled files
+# Java
 *.class
 
 # Eclipse
 .settings/
-.project
 .classpath
+.project
+.factorypath
 
 # Logs
 *.log
