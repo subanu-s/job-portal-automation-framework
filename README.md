@@ -51,7 +51,40 @@ src
 ```
 
 ---
+## Framework Architecture
 
+```mermaid
+flowchart TD
+    A[testng.xml] --> B[LoginTest]
+
+    B --> C[BaseTest]
+    C --> D[DriverFactory]
+    C --> E[ConfigReader]
+
+    E --> D
+    D --> F{Browser Selection}
+
+    F -->|Chrome| G[ChromeDriver]
+    F -->|Edge| H[EdgeDriver]
+
+    G --> I[WebDriver Instance]
+    H --> I
+
+    B --> J[LoginPage - Page Object Model]
+    J --> K[WaitUtils]
+    K --> L[Web Application]
+    L --> M[Assertions]
+
+    M --> N[TestListener]
+
+    N -->|Test Failure| O[ScreenshotUtils]
+    N -->|Pass / Fail / Skip| P[ExtentReportManager]
+
+    O --> P
+    P --> Q[HTML Automation Report]
+```
+
+---
 ## Framework Flow
 
 ```
