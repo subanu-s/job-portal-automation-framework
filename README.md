@@ -99,7 +99,14 @@ flowchart TD
 
 # Extent Report 3
 
+
 ![Extent Report 3](docs/extendreport3.png)
+
+# Project Structure
+
+The framework follows a modular and reusable architecture with separate packages for base classes, page objects, utilities, listeners, test cases, and configuration.
+
+![Project Explorer](docs/project explorer.png)
 ---
 ## Framework Flow
 
